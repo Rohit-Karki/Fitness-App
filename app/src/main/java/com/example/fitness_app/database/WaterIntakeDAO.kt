@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.StateFlow
 interface WaterIntakeDAO {
 
     @Query("SELECT * FROM waterIntake")
-    suspend fun getAll(): StateFlow<List<WaterIntake>>
+    fun getAll(): StateFlow<List<WaterIntake>>
 
     @Query("UPDATE waterintake SET value = :value where date = :date")
     suspend fun updateWaterIntake(date:String,value: Long)
@@ -20,7 +20,7 @@ interface WaterIntakeDAO {
     suspend fun insertWaterIntake(waterIntake: WaterIntake)
 
     @Query("SELECT * FROM waterintake WHERE date = :date")
-    suspend fun getWaterIntake(date:String) : StateFlow<WaterIntake>
+    fun getWaterIntake(date:String) : StateFlow<WaterIntake>
 
 
 }

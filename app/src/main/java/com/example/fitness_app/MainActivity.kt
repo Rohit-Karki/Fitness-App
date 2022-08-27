@@ -13,9 +13,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.fitness_app.ui.theme.Fitness_AppTheme
 import com.example.fitness_app.viewmodel.ReminderViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.InternalCoroutinesApi
 
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @InternalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
