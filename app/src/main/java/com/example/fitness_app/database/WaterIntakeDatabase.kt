@@ -12,7 +12,7 @@ import com.example.fitness_app.model.WaterIntake
 )
 @TypeConverters(Converters::class)
 abstract class WaterIntakeDatabase :RoomDatabase() {
-    abstract fun waterIntakeDao(): WaterIntakeDAO
+    abstract fun getWaterIntakeDao(): WaterIntakeDAO
 
 
 //    companion object {

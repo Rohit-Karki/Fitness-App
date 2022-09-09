@@ -2,13 +2,13 @@ package com.example.fitness_app.database
 
 import androidx.room.*
 import com.example.fitness_app.model.WaterIntake
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface WaterIntakeDAO {
 
     @Query("SELECT * FROM waterIntake")
-    fun getAll(): StateFlow<List<WaterIntake>>
+    fun getAll(): Flow<List<WaterIntake>>
 
     @Query("UPDATE waterintake SET value = :value where date = :date")
     suspend fun updateWaterIntake(date:String,value: Long)
@@ -20,7 +20,7 @@ interface WaterIntakeDAO {
     suspend fun insertWaterIntake(waterIntake: WaterIntake)
 
     @Query("SELECT * FROM waterintake WHERE date = :date")
-    fun getWaterIntake(date:String) : StateFlow<WaterIntake>
+    fun getWaterIntake(date:String) : Flow<WaterIntake>
 
 
 }
