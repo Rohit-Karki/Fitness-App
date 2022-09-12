@@ -2,15 +2,19 @@ package com.example.fitness_app.di.module
 
 import android.content.Context
 import androidx.room.Room
+import com.example.fitness_app.database.WaterIntakeDAO
 import com.example.fitness_app.database.WaterIntakeDatabase
+import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+
+@Module
 @InstallIn(SingletonComponent::class)
-class FitnessDatabaseModule {
+object FitnessDatabaseModule {
 
     @Singleton
     @Provides
@@ -21,5 +25,11 @@ class FitnessDatabaseModule {
                 WaterIntakeDatabase::class.java,
                 "FitnessApp").
             build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideWaterIntakeDAO(database: WaterIntakeDatabase) :WaterIntakeDAO{
+        return database.getWaterIntakeDao()
     }
 }

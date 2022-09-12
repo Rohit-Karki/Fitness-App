@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.fitness_app.model.State
 import com.example.fitness_app.model.WaterIntake
 import com.example.fitness_app.repository.WaterIntakeRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,6 +14,9 @@ import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
 import kotlinx.coroutines.flow.collect
+
+
+@HiltViewModel
 @InternalCoroutinesApi
 class ReminderViewModel @Inject constructor(private val waterIntakeRepository: WaterIntakeRepository) : ViewModel(){
 
