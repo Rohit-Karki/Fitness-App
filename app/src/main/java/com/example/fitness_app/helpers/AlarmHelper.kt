@@ -54,7 +54,7 @@ class AlarmHelper {
     fun cancelAlarm(context: Context) {
         alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
-        val alarmIntent = Intent(context, NotifierReceiver::class.java)
+        val alarmIntent = Intent(context, NotificationReceiver::class.java)
         alarmIntent.action = ACTION_BD_NOTIFICATION
 
         val pendingAlarmIntent = PendingIntent.getBroadcast(

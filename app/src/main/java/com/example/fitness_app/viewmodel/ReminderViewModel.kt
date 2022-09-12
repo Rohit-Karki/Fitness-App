@@ -1,6 +1,9 @@
 package com.example.fitness_app.viewmodel
 
+import android.content.Context
 import androidx.compose.runtime.collectAsState
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fitness_app.model.State
@@ -15,7 +18,7 @@ import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
 import kotlinx.coroutines.flow.collect
-
+import java.util.prefs.Preferences
 
 @HiltViewModel
 @InternalCoroutinesApi

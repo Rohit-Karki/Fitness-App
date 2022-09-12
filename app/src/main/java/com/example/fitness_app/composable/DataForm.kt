@@ -135,11 +135,7 @@ fun DataForm() {
             val hour = calendar[Calendar.HOUR_OF_DAY]
             val minute = calendar[Calendar.MINUTE]
 
-
-
-
             val context = LocalContext.current
-
             val time = remember { mutableStateOf("")}
             val timePickerDialog = TimePickerDialog(
                 context,
@@ -147,8 +143,7 @@ fun DataForm() {
                     hour: Int ,
                     minute : Int ->
                     time.value = "$hour:$minute"
-                },
-                , hour , minute, false
+                }, hour , minute, false
             )
 
             OutlinedTextField(
