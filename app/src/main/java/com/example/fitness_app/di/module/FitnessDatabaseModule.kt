@@ -12,9 +12,21 @@ import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 
+<<<<<<< HEAD
 @Module
 @InstallIn(SingletonComponent::class)
 object FitnessDatabaseModule {
+=======
+@InstallIn(SingletonComponent::class)
+@Module
+object FitnessDatabaseModule {
+
+    @Singleton
+    @Provides
+    fun provideWaterIntakeDAO (database: WaterIntakeDatabase): WaterIntakeDAO {
+        return database.getWaterIntakeDao()
+    }
+>>>>>>> 7ebc43c0cba6a084bb4902b0c204808aa4af309c
 
     @Singleton
     @Provides

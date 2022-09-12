@@ -5,9 +5,9 @@ import com.example.fitness_app.model.WaterIntake
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 
+
 @Dao
 interface WaterIntakeDAO {
-
     @Query("SELECT * FROM waterIntake")
     fun getAll(): Flow<List<WaterIntake>>
 
@@ -22,6 +22,4 @@ interface WaterIntakeDAO {
 
     @Query("SELECT * FROM waterintake WHERE date = :date")
     fun getWaterIntake(date:String) : Flow<WaterIntake>
-
-
 }
