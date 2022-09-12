@@ -15,6 +15,8 @@ abstract class WaterIntakeDatabase :RoomDatabase() {
     abstract fun getWaterIntakeDao(): WaterIntakeDAO
 
 
+    // Without Dependency injection database builder
+
 //    companion object {
 //        @Volatile
 //        private var instance: WaterIntakeDatabase? = null

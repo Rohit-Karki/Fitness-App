@@ -8,6 +8,5 @@ class NotificationReceiver :BroadcastReceiver(){
     override fun onReceive(context: Context?, intent: Intent?) {
 
 
-
     }
 }

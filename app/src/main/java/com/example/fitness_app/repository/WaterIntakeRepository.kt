@@ -13,7 +13,6 @@ class WaterIntakeRepository @Inject constructor(private val waterIntakeDAO: Wate
             waterIntakeDAO.insertWaterIntake(waterIntake = WaterIntake(0,0,date))
         }
         return waterIntakeDAO.getWaterIntake(date)
-
     }
     suspend fun updateWaterIntake(waterIntake: WaterIntake){
         if(!waterIntakeDAO.isDateExist(waterIntake.date)) {

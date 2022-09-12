@@ -7,14 +7,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.fitness_app.composable.DataForm
 import com.example.fitness_app.ui.theme.Fitness_AppTheme
-import com.example.fitness_app.viewmodel.ReminderViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.InternalCoroutinesApi
 
@@ -26,7 +21,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             Fitness_AppTheme {
                 Surface(color = MaterialTheme.colors.background) {
-//                    Greeting("Rohit")
                     DataForm()
                 }
             }
@@ -37,12 +31,9 @@ class MainActivity : ComponentActivity() {
 @InternalCoroutinesApi
 @Composable
 fun Greeting(name: String) {
-
-//    val reminderViewModel = hiltViewModel<ReminderViewModel>()
-//  val waterIntakeValue = reminderViewModel.waterIntakeQuantity.collectAsState()
-
     Text(text = "Hello Rohit!")
 }
+
 
 @InternalCoroutinesApi
 @Preview(showBackground = true)
