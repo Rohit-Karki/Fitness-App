@@ -1,37 +1,22 @@
 package com.example.fitness_app.composable
 
-import android.app.Person
-import android.graphics.ColorFilter
-import android.graphics.Paint
-import android.graphics.drawable.RippleDrawable
-import android.util.Log
+
+import android.app.TimePickerDialog
+import android.content.Context
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
-import androidx.compose.material.ButtonDefaults.buttonColors
-import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.sharp.*
 import androidx.compose.runtime.*
-import androidx.compose.runtime.R
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Blue
 import androidx.compose.ui.graphics.Color.Companion.Cyan
-import androidx.compose.ui.graphics.Color.Companion.Gray
-import androidx.compose.ui.graphics.Color.Companion.White
-import androidx.compose.ui.graphics.Shadow
-import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -40,7 +25,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.room.util.TableInfo
+import com.example.fitness_app.R
+import java.util.*
 
 @Preview (showBackground = true)
 @Composable
@@ -53,8 +39,7 @@ fun DataForm() {
             .padding(10.dp)
     ) {
 
-      //  Column(horizontalAlignment = Alignment.Start) {
-
+        val context = LocalContext.current
             Text(
                 "Let's Get Started",
                 modifier = Modifier
@@ -65,28 +50,7 @@ fun DataForm() {
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Light,
                 fontSize = 40.sp,
-
                 )
-
-
-
-
-
-        /*Column(
-          /*  Text(
-                text = "Name",
-                color = Color.Blue,
-                textAlign = TextAlign.Left,
-                fontSize = 20.sp,
-                modifier = Modifier.fillMaxSize(),
-
-                )   */
-
-            {
-                var name by remember { mutableStateOf("Name") }
-                TextField(value = name, onValueChange = { newText -> name = newText })
-            }
-        ) */
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -108,19 +72,7 @@ fun DataForm() {
                     imageVector = Icons.Sharp.Person,
                     contentDescription = "Person Icon"
                 )
-                },
-               /* trailingIcon = {
-                    IconButton(onClick = {
-                        Log.d("Check" , "Clicked")
-                    }) {
-                        Icon(
-                            imageVector = Icons.Filled.Check,
-                            contentDescription = "Check Icon"
-                        )
-                    }
                 }
-                */
-
             )
 
             var age by remember {
@@ -142,7 +94,6 @@ fun DataForm() {
                         contentDescription = "Age"
                     )
                 }
-
             )
 
             var mass by remember {
@@ -162,7 +113,6 @@ fun DataForm() {
                         contentDescription = "Weight"
                     )
                 }
-
             )
 
             OutlinedTextField(
@@ -181,6 +131,26 @@ fun DataForm() {
 
             )
 
+            val calendar = Calendar.getInstance()
+            val hour = calendar[Calendar.HOUR_OF_DAY]
+            val minute = calendar[Calendar.MINUTE]
+
+
+
+
+            val context = LocalContext.current
+
+            val time = remember { mutableStateOf("")}
+            val timePickerDialog = TimePickerDialog(
+                context,
+                {_,
+                    hour: Int ,
+                    minute : Int ->
+                    time.value = "$hour:$minute"
+                },
+                , hour , minute, false
+            )
+
             OutlinedTextField(
                 value = "",
                 onValueChange = {},
@@ -193,8 +163,16 @@ fun DataForm() {
                         imageVector = Icons.Sharp.Alarm,
                         contentDescription = "WakeUp Time"
                     )
-                }
+                },
+                trailingIcon = {
+                    Button(onClick = {timePickerDialog.show()},
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Blue),
+                        shape = CircleShape,
 
+                    ) {
+                        Text(text = "Set")
+                    }
+                }
             )
 
             OutlinedTextField(
@@ -234,18 +212,9 @@ fun DataForm() {
                     )
                     ) {
                     Text(
-//                     //   modifier = Modifier.padding(20.dp),
-                      //  fontSize = 50.sp,
                         text = "Next",
                         color = Color.White
                     )
-
-                   /* Image(
-                        imageVector = Icons.Sharp.ArrowForward,
-                        contentDescription = null,
-
-                        )   */
-
 
                 }
 
