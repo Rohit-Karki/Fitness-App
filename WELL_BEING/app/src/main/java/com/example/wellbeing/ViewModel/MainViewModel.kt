@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    //private val stepSensor: MeasurableSensor
+//    private val stepSensor: MeasurableSensor
 ) :ViewModel(){
     var stepCount = mutableStateOf<Float>(0f)
 

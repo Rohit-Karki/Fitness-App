@@ -17,6 +17,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.fitness_app.composable.DataForm
 import kotlinx.coroutines.delay
 
 @Composable
@@ -26,6 +27,9 @@ fun Navigation()
     NavHost(navController = navController, startDestination = "splash_screen") {
         composable("splash_screen") {
             SplashScreen(navController = navController)
+        }
+        composable("login_form"){
+            DataForm(navController = navController)
         }
         composable("navigation_bar") {
             NavigationBar()

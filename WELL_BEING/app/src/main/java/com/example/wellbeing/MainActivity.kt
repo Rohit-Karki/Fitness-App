@@ -16,20 +16,16 @@ import dagger.hilt.android.AndroidEntryPoint
 
 import kotlinx.coroutines.delay
 
-//@AndroidEntryPoint
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-//    @OptIn(ExperimentalMaterial3Api::class)
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
             setContent {
                 Surface(color = Color(0xFF202020), modifier = Modifier.fillMaxSize()) {
                     Navigation()
-
                 }
-
             }
 
     }

@@ -84,12 +84,9 @@ fun WaterUITheme(){
     val animatedProgress = animateFloatAsState(
         targetValue = progress,
     animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec ).value
-
-
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
-
     ){
 
         Spacer(Modifier.height(150.dp))
@@ -145,16 +142,8 @@ fun WaterUITheme(){
                 ,
                 color = PrimaryColor,
                 strokeWidth = 23.dp,
-
-
                 )
         }
-
-
-
-
-
-
         Spacer(Modifier.height(30.dp))
         Button(
             modifier=Modifier

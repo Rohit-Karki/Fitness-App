@@ -1,6 +1,7 @@
 package com.example.wellbeing.screens
 
 import android.content.Context
+import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -32,45 +33,74 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.wellbeing.Exercise.ExerciseData
 import com.example.wellbeing.ExerciseDataDetails
+import com.example.wellbeing.composable.FruitGrid
+import com.example.wellbeing.composable.FruitsDataDetails
+import com.example.wellbeing.model.FruitsData
 import com.example.wellbeing.ui.theme.*
 
 //import com.example.wellbeing.Services.TrackingService
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-//import com.example.wellbeing.others.Constants
-
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun DailyScreen(){
+//    val navHostController = rememberNavController()
+//
+//
+//    NavHost(
+//        navController = navHostController,
+//        startDestination = "exercise_data"
+//    ){
+//        composable("exercise_data"){
+//            Exercise(navController = navHostController)
+//        }
+//        composable("grid_detail/{item}",
+//            arguments = listOf(
+//                navArgument("item"){
+//                    type = NavType.StringType
+//                }
+//            )
+//        ){navBackStackEntry ->
+//
+//            navBackStackEntry?.arguments?.getString("item")?.let { json->
+//                val item = Gson().fromJson(json,ExerciseData::class.java)
+//                ExerciseDataDetails(data = item)
+//
+//            }
+//        }
+//
+//
+//    }
     val navHostController = rememberNavController()
+
 
 
     NavHost(
         navController = navHostController,
-        startDestination = "exercise_data"
+        startDestination = "fruits_data"
     ){
-        composable("exercise_data"){
-            Exercise(navController = navHostController)
+        composable("fruits_data"){
+            FruitGrid()
         }
-        composable("grid_detail/{item}",
+        composable("grid_detail/{data}",
             arguments = listOf(
-                navArgument("item"){
+                navArgument("data"){
                     type = NavType.StringType
                 }
             )
         ){navBackStackEntry ->
-
-            navBackStackEntry?.arguments?.getString("item")?.let { json->
-                val item = Gson().fromJson(json,ExerciseData::class.java)
-                ExerciseDataDetails(data = item)
-
+            navBackStackEntry?.arguments?.getString("data")?.let { json->
+                Log.d("json","$json")
+                val data = Gson().fromJson(json,FruitsData::class.java)
+                FruitsDataDetails(data = data)
             }
         }
-
-
     }
+
+
+
 
 
 }

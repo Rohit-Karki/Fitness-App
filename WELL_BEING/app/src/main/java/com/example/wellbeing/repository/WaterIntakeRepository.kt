@@ -1,4 +1,4 @@
-//package com.example.wellbeing.repository
+package com.example.wellbeing.repository
 //
 //import com.example.wellbeing.database.WaterIntakeDAO
 //import com.example.wellbeing.model.WaterIntake

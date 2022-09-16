@@ -13,15 +13,24 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.wellbeing.ViewModel.LoginViewModel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
+
 
 @Composable
 fun SplashScreen(navController : NavController){
+
+    val loginViewModel = hiltViewModel<LoginViewModel>()
+
     val scale = remember {
         Animatable(0f)
     }
     LaunchedEffect(key1 = true) {
+
+
         scale.animateTo(
             targetValue = 0.7f,
             animationSpec = tween(
@@ -29,12 +38,19 @@ fun SplashScreen(navController : NavController){
                 easing = {
                     OvershootInterpolator(4f).getInterpolation(it)
                 }
-
             )
         )
-        delay(3000L)
-        navController.navigate("navigation_bar")
+        navController.popBackStack()
+        loginViewModel.readFirstTime().collect { completed ->
+            if(completed){
+                navController.navigate("navigation_bar")
+            }
+            else{
+                navController.navigate("login_form")
+            }
+        }
     }
+
 
     Box(
         contentAlignment = Alignment.Center,
